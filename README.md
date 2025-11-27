@@ -5,7 +5,7 @@
 ## Overview
 
 - RESTful API - Checkout, order management, product catalog
-- Kafka Event Streaming - Asynchronous order processing
+- Kafka Event Streaming - order processing
 - Stock Management - Real-time inventory tracking with reservation
 - Database Persistence - PostgreSQL with Flyway migrations
 - Validation - Request validation with Jakarta Bean Validation
@@ -16,23 +16,8 @@
 ## Architecture
 
 ### System Flow
-┌─────────────┐         ┌──────────────────┐         ┌──────────────┐
-│   Client    │ ──HTTP──│ Checkout Service │ ──DB──► │  PostgreSQL  │
-└─────────────┘         └──────────────────┘         └──────────────┘
-                               │      ▲
-                          Kafka│      │Kafka
-                          Topic│      │Topic
-                               ▼      │
-                        ┌──────────────────────┐
-                        │  Apache Kafka        │
-                        │  - checkout.order    │
-                        │    .processed        │
-                        └──────────────────────┘
-                               │
-                               ▼
-                        ┌──────────────────────┐
-                        │ Notification Service │
-                        └──────────────────────┘
+<img width="1028" height="680" alt="image" src="https://github.com/user-attachments/assets/84e0747d-8f5a-4236-bfc8-435de72710e9" />
+
 
 ### Checkout Process Flow
 
